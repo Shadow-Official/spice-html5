@@ -1,8 +1,23 @@
-Spice Javascript client
+# Spice Javascript client
 
-Instructions and status as of August, 2016.
+## Bundling
 
-Requirements:
+### Build
+
+To bundle the JS, you have to follow these steps:
+
+* `yarn`
+* `yarn build`
+
+That's it, the minified JS bundle is in `dist/assets` folder.
+
+### Config
+
+The config is in `vite.config.js`
+
+## Instructions and status as of August, 2016.
+
+### Requirements:
 
   1.  Modern Firefox or Chrome (IE will work, but badly)
 
@@ -19,7 +34,7 @@ Requirements:
   3.  A spice server
 
 
-Optional:
+### Optional:
   1.  A web server
 
       With firefox, you can just open file:///your-path-to-spice.html-here
