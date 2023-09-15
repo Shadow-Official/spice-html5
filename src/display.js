@@ -841,6 +841,22 @@ SpiceDisplayConn.prototype.hook_events = function()
     {
         var canvas = this.surfaces[this.primary_surface].canvas;
         canvas.sc = this.parent;
+        
+        const { clientHeight: canvasHeight, clientWidth: canvasWidth } = canvas;  
+        const { height: surfaceHeight, width: surfaceWidth } = canvas.sc.display.surfaces[canvas.sc.display.primary_surface];
+
+        if (canvasHeight < surfaceHeight) {
+          canvas.sc.heightFactor = Math.round((surfaceHeight / canvasHeight) * 100) / 100;
+        } else {
+          canvas.sc.heightFactor = Math.round((canvasHeight / surfaceHeight) * 100) / 100;
+        }
+
+        if (canvasWidth < surfaceWidth) {
+          canvas.sc.widthFactor = Math.round((surfaceWidth / canvasWidth) * 100) / 100;
+        } else {
+          canvas.sc.widthFactor = Math.round((canvasWidth / surfaceWidth) * 100) / 100;
+        }
+
         canvas.addEventListener('mousemove', Inputs.handle_mousemove);
         canvas.addEventListener('mousedown', Inputs.handle_mousedown);
         canvas.addEventListener('contextmenu', Inputs.handle_contextmenu);
